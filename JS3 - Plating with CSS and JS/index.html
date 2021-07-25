@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLaying with CSS Variables</title>
+</head>
+
+<body>
+    <h2>Updating CSS Variables with <span class="h1">JS</span></h2>
+
+    <div class="controls">
+        <label for="spacing">Spacing:</label>
+        <input type="range" id="spacing" name="spacing" min="10" max="200" value="10" data-sizing="px">
+
+        <label for="blur">Blur:</label>
+        <input type="range" id="blur" name="blur" min="0" max="25" value="10" data-sizing="px">
+
+        <label for="base">Base Color</label>
+        <input type="color" id="base" name="base" value="#FF5733">
+
+    </div>
+
+    <img src="boy_jujutsu_kaisen_yuji_itadori_4k_hd_jujutsu_kaisen-3840x2160.jpg" height="350px" width="600px" alt="">
+
+</body>
+
+<style>
+    :root {
+        --base: #FF5733;
+        --spacing: 10px;
+        --blur: 10px;
+    }
+
+    .h1 {
+        color: var(--base);
+    }
+
+    img {
+        padding: var(--spacing);
+        background: var(--base);
+        filter: blur(var(--blur));
+    }
+
+    html {
+        background-image: url(yn.jpg);
+        background-size: cover;
+        text-align: center;
+        font-size: 10px;
+
+    }
+
+    body {
+        margin: 0rem;
+        font-family: Comic Sans MS;
+        color: cornsilk;
+        font-weight: 80;
+        font-size: 40px;
+    }
+
+    .controls {
+        margin-bottom: 40px;
+        /* margin-top: 20px; */
+    }
+</style>
+
+<script>
+    const inputs = document.querySelectorAll('.controls input');
+
+    function update() {
+        // console.log(this.value);
+        // console.log(this.dataset);
+        const ab = this.dataset.sizing || '';
+        // console.log(this.name);
+        document.documentElement.style.setProperty(`--${this.name}`, this.value + ab);
+    }
+
+    inputs.forEach(x => x.addEventListener('change', update));
+    inputs.forEach(x => x.addEventListener('mousemove', update));
+
+</script>
+
+</html>
