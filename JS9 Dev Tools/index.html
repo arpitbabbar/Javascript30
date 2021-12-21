@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev Tools</title>
+</head>
+
+<body>
+    <p onclick="makeGreen()">
+        xBREAKxDOWNx
+    </p>
+
+    <script>
+
+        const dogs = [{ name: 'Snickers', age: 2 }, { name: 'hugo', age: 8 }];
+
+        // how to check which propertu or fxn is being changed in page
+        // due to whicj JS
+        // INspect> elemnts> right click> enable modification
+
+        function makeGreen() {
+            const p = document.querySelector('p');
+            p.style.color = 'Red';
+            p.style.fontSize = '50px';
+        }
+
+        //Regular
+        console.log("Hello");
+
+        //Interpolated
+        console.log('Hey! My Name is %s Babbar', 'Arpit');
+
+        //Styled = do any css
+        console.log('%c Hey wassup!', 'font-size:50px');
+
+        //warning
+        console.warn('Its a warning bro');
+
+        //error
+        console.error("Brrrrrrr.... error occurred");
+
+        //info
+        console.info("I am a good boy");
+
+        //testing
+        // console.assert(1 == 2, 'Its bad');
+        const p = document.querySelector('p');
+
+        console.assert(p.classList.contains('ouch'), 'its wrong');
+
+        //clearing
+        console.clear();
+
+        //viewing dom elemts
+        console.log(p);
+        console.dir(p);
+
+        console.clear();
+
+        //groping togethetr
+        dogs.forEach(dog => {
+            // console.group(`${dog.name}`);
+            console.groupCollapsed(`${dog.name}`);
+            console.log(`This is  ${dog.name}`);
+            console.log(`${dog.name} is ${dog.years} old`);
+            console.groupEnd(`${dog.name}`);
+        })
+
+        //counting
+        console.count("Aerry");
+        console.count("Aerry");
+        console.count("Aerry");
+        console.count("Arpit");
+        console.count("Arpit");
+        console.count("Arpit");
+        console.count("Aerry");
+        console.count("Aerry");
+        console.count("Arpit");
+        console.count("Arpit");
+
+        console.count("Aerry");
+        console.count("Arpit");
+
+        //timing
+        console.time('Fetching Data');
+        fetch('https://github.com/arpitbabbar/BrosBlog.git')
+            .then(data => data.json())
+            .then(data => {
+                console.timeEnd('Fetching Data');
+                console.log(data);
+            })
+
+
+        console.table(dogs);
+
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>
